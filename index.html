@@ -50,7 +50,7 @@
             transition: all 0.5s ease;
         }
         
-        /* Animated Navbar */
+        /* Navbar */
         nav {
             position: fixed;
             top: 0;
@@ -87,6 +87,7 @@
             align-items: center;
             gap: 10px;
             transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            order: 1;
         }
         
         .logo i {
@@ -97,6 +98,8 @@
         .nav-links {
             display: flex;
             gap: 30px;
+            order: 2;
+            margin-left: auto;
         }
         
         .nav-links a {
@@ -131,11 +134,90 @@
             transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
             padding: 8px;
             border-radius: 50%;
+            order: 3;
+            margin-left: 15px;
         }
         
         .mode-toggle:hover {
             transform: rotate(30deg) scale(1.1);
             background: rgba(108, 92, 231, 0.1);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            order: 4;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        .menu-items {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 80px 20px;
+            transition: all 0.5s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-items.active {
+            right: 0;
+        }
+        
+        .menu-items a {
+            display: block;
+            padding: 12px 15px;
+            margin: 10px 0;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .menu-items a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .menu-items a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
         
         /* Hero Section */
@@ -154,7 +236,7 @@
             z-index: 2;
             transform: translateY(20px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .hero.animated .hero-content {
@@ -189,7 +271,7 @@
             max-width: 600px;
             transform: translateY(20px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
         }
         
         .hero.animated .download-form {
@@ -278,7 +360,7 @@
             z-index: 1;
             animation: float 6s ease-in-out infinite;
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.4s;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s;
             filter: drop-shadow(0 10px 20px rgba(108, 92, 231, 0.4));
         }
         
@@ -295,9 +377,9 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .features.animated .section-title {
@@ -331,16 +413,16 @@
             border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
         }
         
         .features.animated .feature-card {
             transform: translateY(0);
             opacity: 1;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
         }
         
         .features.animated .feature-card:nth-child(1) {
@@ -387,9 +469,9 @@
         }
         
         .popular-videos .section-title {
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .popular-videos.animated .section-title {
@@ -407,16 +489,16 @@
             background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
         }
         
         .popular-videos.animated .video-card {
             transform: translateY(0);
             opacity: 1;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
         }
         
         .popular-videos.animated .video-card:nth-child(1) {
@@ -524,9 +606,9 @@
         }
         
         .platforms .section-title {
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .platforms.animated .section-title {
@@ -547,15 +629,15 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(30px);
             opacity: 0;
         }
         
         .platforms.animated .platform-item {
             transform: translateY(0);
             opacity: 1;
-            filter: drop-shadow(0 10px 20px rgba(108, 92, 231, 0.3));
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.2);
         }
         
         .platforms.animated .platform-item:nth-child(1) {
@@ -584,7 +666,7 @@
         
         .platform-item:hover {
             transform: translateY(-5px);
-            filter: drop-shadow(0 15px 30px rgba(108, 92, 231, 0.4));
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
         }
         
         .platform-icon {
@@ -633,9 +715,9 @@
             margin-bottom: 40px;
             position: relative;
             z-index: 1;
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         footer.animated .footer-content {
@@ -749,9 +831,9 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             position: relative;
             z-index: 1;
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
         }
 
         footer.animated .footer-bottom {
@@ -825,7 +907,29 @@
         .fa-spin {
             animation: spin 1s linear infinite;
         }
-        
+
+        /* Scroll Animation Effects */
+        section, footer {
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, opacity, box-shadow;
+        }
+
+        section:not(.animated), footer:not(.animated) {
+            opacity: 0;
+            transform: translateY(30px);
+            box-shadow: none;
+        }
+
+        /* Modified to keep elements visible when scrolling up */
+        section.animated, 
+        footer.animated,
+        .feature-card.animated, 
+        .video-card.animated, 
+        .platform-item.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
@@ -844,6 +948,16 @@
             
             .nav-links {
                 display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                order: 3;
+            }
+            
+            .mode-toggle {
+                order: 2;
+                margin-right: 15px;
             }
             
             .hero {
@@ -882,7 +996,7 @@
     </style>
 </head>
 <body>
-    <!-- Animated Navbar -->
+    <!-- Navbar -->
     <nav id="navbar">
         <a href="#" class="logo">
             <i class="fas fa-video"></i>
@@ -900,7 +1014,22 @@
         <button class="mode-toggle" id="modeToggle">
             <i class="fas fa-moon"></i>
         </button>
+        
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="menu-items" id="menuItems">
+        <a href="yt.html"><i class="fab fa-youtube"></i> YouTube Downloader</a>
+        <a href="tt.html"><i class="fab fa-tiktok"></i> TikTok Downloader</a>
+        <a href="ig.html"><i class="fab fa-instagram"></i> Instagram Downloader</a>
+        <a href="fb.html"><i class="fab fa-facebook"></i> Facebook Downloader</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+    </div>
     
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -911,7 +1040,7 @@
             <div class="download-form">
                 <div class="form-group">
                     <label for="videoUrl">Paste video URL:</label>
-                    <input type="text" id="videoUrl" class="form-control" placeholder="url video yang mau diunduh">
+                    <input type="text" id="videoUrl" class="form-control" placeholder="url video yang mau di unduh">
                 </div>
                 <button class="download-btn" id="downloadBtn">
                     <i class="fas fa-download"></i> Download Now
@@ -983,18 +1112,18 @@
             
             <div class="video-card">
                 <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/J---aiyznGQ/maxresdefault.jpg" alt="Video Thumbnail">
+                    <img src="https://files.catbox.moe/8kf87n.jpg" alt="Video Thumbnail">
                     <div class="play-icon">
                         <i class="fas fa-play"></i>
                     </div>
                 </div>
                 <div class="video-info">
-                    <h3>Keyboard Cat - The Original</h3>
+                    <h3>Mahiru Shiina GFX</h3>
                     <div class="video-meta">
                         <span>YouTube</span>
                         <span>1:42</span>
                     </div>
-                    <a href="#" class="download-btn-small" data-url="https://www.youtube.com/watch?v=J---aiyznGQ">Download</a>
+                    <a href="#" class="download-btn-small" data-url="https://youtu.be/YlxaCrRgYTY?si=HyeQJfWdEvR3MssT">Download</a>
                 </div>
             </div>
             
@@ -1017,18 +1146,18 @@
             
             <div class="video-card">
                 <div class="video-thumbnail">
-                    <img src="https://i.ytimg.com/vi/V-_O7nl0Ii0/maxresdefault.jpg" alt="Video Thumbnail">
+                    <img src="https://img.youtube.com/vi/JzV7Q8AMJgo/maxresdefault.jpg" alt="Video Thumbnail">
                     <div class="play-icon">
                         <i class="fas fa-play"></i>
                     </div>
                 </div>
                 <div class="video-info">
-                    <h3>Baby Shark Dance - Pinkfong</h3>
+                    <h3>Mahiru Shiina in Desmos | Art</h3>
                     <div class="video-meta">
                         <span>YouTube</span>
                         <span>2:20</span>
                     </div>
-                    <a href="#" class="download-btn-small" data-url="https://www.youtube.com/watch?v=V-_O7nl0Ii0">Download</a>
+                    <a href="#" class="download-btn-small" data-url="https://youtu.be/JzV7Q8AMJgo?si=FTAmAIysZzNgj4OF">Download</a>
                 </div>
             </div>
         </div>
@@ -1113,13 +1242,20 @@
             </div>
             
             <div class="footer-column">
-                <h3>Supported Sites</h3>
+                <h3>Support me</h3>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
-                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://youtube.com/@haidarmahiruofficial?si=x3VPVdynidycyF8Z"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="https://www.instagram.com/aufahaidarr?igsh=MWdscDJucWN3bHg1bA=="><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@tololyapit?_t=ZS-8wUzPcei5iq&_r=1"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                </ul>
+
+                <h3 style="margin-top: 20px;">Donasi</h3>
+                <ul class="footer-links">
+                    <li>
+                        <a href="https://files.catbox.moe/8wy3pn.png" target="_blank">
+                            <i class="fas fa-donate"></i> Dukung lewat QRIS
+                        </a>
+                    </li>
                 </ul>
             </div>
             
@@ -1128,7 +1264,7 @@
                 <ul class="contact-info">
                     <li><i class="fas fa-map-marker-alt"></i> Surabaya, Indonesia</li>
                     <li><i class="fas fa-envelope"></i> akunpribadihaidarr@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +62 895-3268-84022</li>
+                    <li><i class="fas fa-phone"></i> +62 8953-2688-4022</li>
                 </ul>
             </div>
         </div>
@@ -1177,24 +1313,39 @@
             }
         });
         
-        // Scroll animation
+        // Modified scroll animation - elements stay visible when scrolling up
         const animateOnScroll = function() {
             const sections = document.querySelectorAll('section, footer');
             
             sections.forEach(section => {
                 const sectionTop = section.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                
-                if (sectionTop < windowHeight - 100) {
+                const triggerPoint = windowHeight * 0.8;
+
+                if (sectionTop < triggerPoint) {
                     section.classList.add('animated');
+                    
+                    // Animate child elements
+                    const cards = section.querySelectorAll('.feature-card, .video-card, .platform-item');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animated');
+                        }, index * 100);
+                    });
                 }
             });
         };
-        
+
         // Initialize animations
         window.addEventListener('load', function() {
+            // Hero section langsung muncul
             document.getElementById('hero').classList.add('animated');
-            window.addEventListener('scroll', animateOnScroll);
+            
+            window.addEventListener('scroll', function() {
+                animateOnScroll();
+            });
+            
+            // Initial check
             animateOnScroll();
         });
         
@@ -1444,6 +1595,24 @@
                 const url = this.getAttribute('data-url');
                 handleDownload(url);
             });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const menuItems = document.getElementById('menuItems');
+        
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            menuItems.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !menuItems.contains(e.target) && 
+                menuToggle.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                menuItems.classList.remove('active');
+            }
         });
     </script>
 </body>
